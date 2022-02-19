@@ -8,6 +8,7 @@ use App\Models\Gift;
 use App\Models\GiftRedeemed;
 use App\Transformers\GiftRatedTransformer;
 use App\Transformers\GiftRedeemedTransformer;
+use App\Transformers\GiftTransformer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -42,7 +43,7 @@ class GiftController extends Controller
         $gifts = $paginator->getCollection();
 
         return Fractal::create()
-            ->collection($gifts, new GiftRatedTransformer(), 'gift')
+            ->collection($gifts, new GiftTransformer(), 'gift')
             ->serializeWith(new JsonApiSerializer())
             ->paginateWith(new IlluminatePaginatorAdapter($paginator))
             ->toArray();
