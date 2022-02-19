@@ -33,8 +33,17 @@ it('Can fetch gift list and contains pagination', function () {
 });
 
 it('Unauthenticated when access restricted endpoint', function () {
-    Gift::factory()->create();
     $response = $this->postJson("/api/gift", []);
     $response->assertStatus(403);
 });
 
+it('Unauthorized when access restricted endpoint', function () {
+    $this->seed(UserRoleSeeder::class);
+
+    $token = JWTAuth::fromUser(User::find(2));
+
+    $response = $this->postJson("/api/gift", [], [
+        'Authorization' => 'Bearer ' . $token
+    ]);
+    $response->assertStatus(403);
+});

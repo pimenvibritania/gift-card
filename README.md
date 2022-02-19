@@ -76,7 +76,7 @@
 #### Library using [PESTPhp Testing Framework](https://pestphp.com/)
 - Install PEST autoladed using command `php artisan pest:install` 
 ### Test the API
-There is two ways to test the API:
+##### There is two ways to test the API:
 - Test the API manually from the local machine using command `./vendor/bin/pest`
 - Automated testing will run automatically using [Bitbucket Pipelines](https://bitbucket.org/pimenvibritania13/gift-card/projects/1/pipelines) when running pipelines or push new code into remote repository.
 ## License
