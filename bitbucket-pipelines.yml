@@ -4,26 +4,44 @@ pipelines:
   default:
     - parallel:
         - step:
-            name: Test
-            image: phpunit/phpunit
+            name: Build Testing
+            image: composer:latest
+            artifacts:
+              - "vendor/**"
             script:
-              - docker run -v $(pwd):/app --rm phpunit/phpunit tests/Feature/ExampleTest.php
-            services:
-              - docker
+              # Install php dependencies
+              - composer install --ignore-platform-reqs --optimize-autoloader
+        - step:
+            name: Run Tests
+            image: php:apache
+            script:
+              # Run tests
+              - vendor/bin/phpunit
         - step:
             name: Lint
             script:
               - find . -name '*.php' -exec php -l {} \;
   branches:
-    master:
+    development:
       - parallel:
           - step:
-              name: Test
-              image: phpunit/phpunit
+              name: Build Testing
+              image: composer:latest
+              artifacts:
+                - "vendor/**"
               script:
-                - docker run -v $(pwd):/app --rm phpunit/phpunit tests/Feature/ExampleTest.php
-              services:
-                - docker
+                # Install php dependencies
+                - composer install --ignore-platform-reqs --optimize-autoloader
+          - step:
+              name: Run Tests
+              image: php:apache
+              script:
+                # Run tests
+                - vendor/bin/phpunit
+          - step:
+              name: Lint
+              script:
+                - find . -name '*.php' -exec php -l {} \;
           - step:
               name: Security Scan
               script:
@@ -40,4 +58,4 @@ pipelines:
                 SSH_USER: $SSH_USER
                 SERVER: $SSH_HOST
                 COMMAND: 'cd /home/pimenvibritania && mkdir testDeploy'
-               
+
