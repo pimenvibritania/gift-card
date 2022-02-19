@@ -4,7 +4,7 @@ app_dir="/home/pimenvibritania/gift-card"
 init_install() {
     git checkout development &&
     /usr/bin/php8.1 /usr/local/bin/composer install --no-interaction -vvv &&
-    openssl enc -aes-256-cbc -d -in .secret.enc -out .env -k ${AES_PASS} &&
+    openssl enc -bf -d -in .secret.enc -out .env -k ${AES_PASS} &&
     php artisan migrate:fresh --seed
 }
 
