@@ -14,6 +14,14 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 /**
  * @method static create(array $all)
+ * @method static paginate(int $int)
+ * @method static find(int $id)
+ * @property mixed $name
+ * @property mixed $email
+ * @property mixed $created_at
+ * @property mixed $updated_at
+ * @property mixed $redeemed
+ * @property mixed $id
  */
 class User extends Authenticatable implements JWTSubject
 {
@@ -29,6 +37,8 @@ class User extends Authenticatable implements JWTSubject
         'email',
         'password',
     ];
+
+    protected $guard_name = 'api';
 
     /**
      * The attributes that should be hidden for serialization.

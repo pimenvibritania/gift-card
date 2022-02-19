@@ -23,6 +23,7 @@ class GiftRedeemedTransformer extends TransformerAbstract
             'id' => $model->id,
             'gift_id' => $model->gift_id,
             'quantity' => $model->quantity,
+            'totalPrice' => $gift->price * $model->quantity,
             'gift' => [
                 'id' => $gift->id,
                 'name' => $gift->name,

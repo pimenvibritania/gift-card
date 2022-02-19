@@ -17,7 +17,7 @@ class GiftRatedFactory extends Factory
     public function definition()
     {
         return [
-            'gift_redeemed_id' => $this->faker->numberBetween(1, 5),
+            'gift_redeemed_id' => $this->faker->unique()->numberBetween(1, 20),
             'rating' => $this->faker->randomFloat(2, 0, 5),
         ];
     }

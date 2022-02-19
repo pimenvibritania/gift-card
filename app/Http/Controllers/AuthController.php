@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Transformers\Users\UserRedeemedTransformer;
 use App\Transformers\Users\UserTransformer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -43,14 +44,5 @@ class AuthController extends Controller
          */
         $user->assignRole("Member");
         return fractal($user, new UserTransformer())->respond(201);
-    }
-
-    protected function respondWithToken($token): JsonResponse
-    {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60
-        ]);
     }
 }

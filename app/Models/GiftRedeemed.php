@@ -51,7 +51,7 @@ class GiftRedeemed extends Model
             'rating' => $rating,
         ]);
 
-        Gift::syncRating($this->gift_id);
+        Gift::syncRating();
 
         return $rated;
     }

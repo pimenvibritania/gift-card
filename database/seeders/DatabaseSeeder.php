@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserRoleSeeder::class);
         Gift::factory(100)->create();
-        GiftRedeemed::factory(5)->create();
-        GiftRated::factory(5)->create();
+        GiftRedeemed::factory(20)->create();
+        GiftRated::factory(10)->create();
+
+        Gift::syncRating();
     }
 }

@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static find(int $id)
  * @property mixed $id
  * @property mixed $stock
+ * @property float|int|mixed $rating
+ * @property mixed $redeemed
  */
 class Gift extends Model
 {
@@ -19,11 +21,18 @@ class Gift extends Model
 
     protected $guarded = ["id"];
 
-    public static function syncRating(mixed $gift_id)
+    public static function syncRating()
     {
-        $gift = Gift::find($gift_id);
-        $gift->rating = $gift->redeemed->sum('rated.rating') / $gift->redeemed->count();
-        $gift->save();
+        $gifts = Gift::with('redeemed.rated')->get();
+        foreach ($gifts as $gift) {
+            /**
+             * @var Gift $gift
+             */
+            if ($gift->redeemed->count() > 0) {
+                $gift->rating = $gift->redeemed->sum('rated.rating') / $gift->redeemed->count();
+                $gift->save();
+            }
+        }
     }
 
     public function redeemed(): HasMany
