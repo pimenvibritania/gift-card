@@ -33,16 +33,16 @@
 - Run `php artisan serve` to run the application or install [Laravel Valet](https://laravel.com/docs/9.x/valet)
 
 ### Deployment
-There is two ways to deploy this application.
+##### There is two ways to deploy this application.
 - Deploy manually to Heroku from the local machine with command line [here](https://devcenter.heroku.com/articles/git).
 - Automatically deploy to Heroku with Bitbucket Pipelines (CI/CD) [here](https://bitbucket.org/pimenvibritania13/gift-card/projects/1/pipelines).
 
-This is the base url of the application: 
+##### This is the base url of the application: 
 - [`https://pim-gift-cards.herokuapp.com/api`](https://pim-gift-cards.herokuapp.com/api)
 - [`http://gift.pimenvibritania.tech/api`](http://gift.pimenvibritania.tech/api)
 
 ### API Testing
-`Postman Collection` attached on `/docs` dir.
+##### `Postman Collection` attached on `/docs` dir.
 - Don't change nor copy/paste the `token` value in the `header` section, it will be generated automatically when successfully login or register (see `/api/auth`).
 
 
