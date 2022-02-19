@@ -1,0 +1,45 @@
+# Template PHP Web Application to deploy to the Google App Engine Standard Environment
+
+# This template allows you to deploy your PHP Web Application to Google App Engine.
+# The workflow allows running tests, code linting and security scans on feature branches (as well as master).
+# The PHP Web Application will be tested and deployed after the code is merged to master.
+
+# Prerequisites: $PROJECT, $KEY_FILE setup in the Deployment variables
+# For advanced cases, please, follow examples from the google-app-engine pipe's README https://bitbucket.org/atlassian/google-app-engine-deploy/src/master/README.md
+
+
+
+image: php:8.1
+
+
+pipelines:
+  default:
+    - parallel:
+        - step:
+            name: Test
+            image: phpunit/phpunit
+            script:
+              - docker run -v $(pwd):/app --rm phpunit/phpunit test
+            services:
+              - docker
+        - step:
+            name: Lint
+            script:
+              - find . -name '*.php' -exec php -l {} \;
+  branches:
+    master:
+      - parallel:
+          - step:
+              name: Test
+              image: phpunit/phpunit
+              script:
+                - docker run -v $(pwd):/app --rm phpunit/phpunit test
+              services:
+                - docker
+          - step:
+              name: Security Scan
+              script:
+                # Run a security scan for sensitive data.
+                # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
+                - pipe: atlassian/git-secrets-scan:0.5.1
+      
