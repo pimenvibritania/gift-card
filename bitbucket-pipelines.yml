@@ -27,6 +27,7 @@ pipelines:
               script:
                 # Install php dependencies
                 - composer install --ignore-platform-reqs --optimize-autoloader
+                - cp .env.example .env
                 - php artisan key:generate
                 - vendor/bin/phpunit
           - step:
