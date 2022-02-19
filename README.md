@@ -35,7 +35,7 @@
 ### Deployment
 ##### There is two ways to deploy this application.
 - Deploy manually to Heroku from the local machine with command line [here](https://devcenter.heroku.com/articles/git).
-- Automatically deploy to Heroku with Bitbucket Pipelines (CI/CD) [here](https://bitbucket.org/pimenvibritania13/gift-card/projects/1/pipelines).
+- Automatically deploy to Heroku with Bitbucket Pipelines (CI/CD) [here](https://bitbucket.org/pimenvibritania13/gift-card/addon/pipelines/home#!/results/17/steps/%7Ba7b77652-8992-4127-8c89-c10d5bf2edc1%7D).
 
 ##### This is the base url of the application: 
 - [`https://pim-gift-cards.herokuapp.com/api`](https://pim-gift-cards.herokuapp.com/api)
@@ -78,6 +78,6 @@
 ### Test the API
 ##### There is two ways to test the API:
 - Test the API manually from the local machine using command `./vendor/bin/pest`
-- Automated testing will run automatically using [Bitbucket Pipelines](https://bitbucket.org/pimenvibritania13/gift-card/projects/1/pipelines) when running pipelines or push new code into remote repository.
+- Automated testing will run automatically using [Bitbucket Pipelines](https://bitbucket.org/pimenvibritania13/gift-card/addon/pipelines/home#!/results/23/steps/%7B07305ff9-3c7f-4388-a2e6-5485e3d5655d%7D) when running pipelines or push new code into remote repository.
 ## License
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
