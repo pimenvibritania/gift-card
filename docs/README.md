@@ -4,6 +4,7 @@
 - Export schema dan data pada Database (dalam bentuk .zip atau .rar)
     - Karenan di Laravel menggunakan migration jadi cukup jalankan perinah `php artisan migrate` untuk mengimport schema database & `php artisan db:seed` untuk seeding dummy data, untuk antisipasi sudah saya sediakan juga file sql berikut datanya. 
 - Jelaskan alasan mengapa memilih menggunakan Laravel
+    - Laravel selalu update dan mengoptimasi framework terbaru, sehingga dapat menjadi pilihan terbaik untuk membuat aplikasi web / REST API.
     - Mudah dan Dokumentasi Lengkap
     - Mempunyai Banyak Library Object Oriented
     - Tersedia Tool Artisan & Tinker
@@ -14,7 +15,6 @@
     - Dukungan komunitas yang terus berkembang
 - Jelaskan mengenai schema DB yang dibuat
     - ![Schema DB](https://imgur.com/6VQ8sIl.png)
-<hr>
 
 
 ####NOTE - Untuk kalkulasi rating & Stock:
