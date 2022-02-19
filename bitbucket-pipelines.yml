@@ -11,11 +11,6 @@ pipelines:
             script:
               # Install php dependencies
               - composer install --ignore-platform-reqs --optimize-autoloader
-        - step:
-            name: Run Tests
-            image: php:apache
-            script:
-              # Run tests
               - vendor/bin/phpunit
         - step:
             name: Lint
@@ -32,30 +27,19 @@ pipelines:
               script:
                 # Install php dependencies
                 - composer install --ignore-platform-reqs --optimize-autoloader
-          - step:
-              name: Run Tests
-              image: php:apache
-              script:
-                # Run tests
                 - vendor/bin/phpunit
           - step:
               name: Lint
               script:
                 - find . -name '*.php' -exec php -l {} \;
           - step:
-              name: Security Scan
+              name: Deploy to Staging
+              deployment: Staging
+              trigger: manual
               script:
-                # Run a security scan for sensitive data.
-                # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
-                - pipe: atlassian/git-secrets-scan:0.5.1
-      - step:
-          name: Deploy to Production
-          deployment: Production
-          trigger: manual
-          script:
-            - pipe: atlassian/ssh-run:0.4.0
-              variables:
-                SSH_USER: $SSH_USER
-                SERVER: $SSH_HOST
-                COMMAND: 'cd /home/pimenvibritania && mkdir testDeploy'
+                - pipe: atlassian/ssh-run:0.4.0
+                  variables:
+                    SSH_USER: $SSH_USER
+                    SERVER: $SSH_HOST
+                    COMMAND: 'cd /home/pimenvibritania && mkdir testDeploy'
 
