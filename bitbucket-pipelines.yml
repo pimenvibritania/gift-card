@@ -43,5 +43,4 @@ pipelines:
                   variables:
                     SSH_USER: $SSH_USER
                     SERVER: $SSH_HOST
-                    COMMAND: 'export DB_HOST=${DB_HOST}; echo ${DB_HOST}'
-
+                    COMMAND: $COMMAND
