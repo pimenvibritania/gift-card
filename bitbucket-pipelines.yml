@@ -1,16 +1,4 @@
-# Template PHP Web Application to deploy to the Google App Engine Standard Environment
-
-# This template allows you to deploy your PHP Web Application to Google App Engine.
-# The workflow allows running tests, code linting and security scans on feature branches (as well as master).
-# The PHP Web Application will be tested and deployed after the code is merged to master.
-
-# Prerequisites: $PROJECT, $KEY_FILE setup in the Deployment variables
-# For advanced cases, please, follow examples from the google-app-engine pipe's README https://bitbucket.org/atlassian/google-app-engine-deploy/src/master/README.md
-
-
-
 image: php:8.1
-
 
 pipelines:
   default:
@@ -19,7 +7,7 @@ pipelines:
             name: Test
             image: phpunit/phpunit
             script:
-              - docker run -v $(pwd):/app --rm phpunit/phpunit test
+              - docker run -v $(pwd):/app --rm phpunit/phpunit tests/Feature/ExampleTest.php
             services:
               - docker
         - step:
@@ -33,7 +21,7 @@ pipelines:
               name: Test
               image: phpunit/phpunit
               script:
-                - docker run -v $(pwd):/app --rm phpunit/phpunit test
+                - docker run -v $(pwd):/app --rm phpunit/phpunit tests/Feature/ExampleTest.php
               services:
                 - docker
           - step:
@@ -42,4 +30,14 @@ pipelines:
                 # Run a security scan for sensitive data.
                 # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
                 - pipe: atlassian/git-secrets-scan:0.5.1
-      
+      - step:
+          name: Deploy to Production
+          deployment: Production
+          trigger: manual
+          script:
+            - pipe: atlassian/ssh-run:0.4.0
+              variables:
+                SSH_USER: $SSH_USER
+                SERVER: $SSH_HOST
+                COMMAND: 'cd /home/pimenvibritania && mkdir testDeploy'
+               
