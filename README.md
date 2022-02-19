@@ -47,30 +47,30 @@
 
 
 ### Endpoints
-| Method | Path                      | Action                    | Roles |
-|--------|---------------------------|---------------------------|-------|
-| POST   | api/auth/login            | AuthController@login      | None  |
-| POST   | api/auth/register         | AuthController@register   | None  |
-| GET    | api/gift                  | GiftController@index      | Member|
-| POST   | api/gift                  | GiftController@store      | Admin |
-| GET    | api/gift/{id}             | GiftController@show       | Member|
-| PUT    | api/gift/{id}             | GiftController@update     | Admin |
-| PATCH  | api/gift/{id}             | GiftController@upsert     | Admin |
-| DELETE | api/gift/{id}             | GiftController@delete     | Admin |
-| POST   | api/gift/{id}/rating      | GiftController@rate       | Member|
-| POST   | api/gift/{id}/redeem      | GiftController@redeem     | Member|
-| GET    | api/role                  | RoleController@index      | Admin |
-| POST   | api/role                  | RoleController@store      | Admin |
- | GET    | api/role/{id}             | RoleController@show       | Admin |
-| PUT    | api/role/{id}             | RoleController@update     | Admin |
-| DELETE | api/role/{id}             | RoleController@delete     | Admin |
-| GET    | api/user                  | UserController@index      | Admin |
-| GET    | api/user/me               | UserController@me         | Member|
-| POST   | api/user                  | UserController@store      | Admin |
-| PUT    | api/user/{id}             | UserController@update     | Admin |
-| GET    | api/user/{id}             | UserController@show       | Admin |
-| DELETE | api/user/{id}             | UserController@delete     | Admin |
-| POST   | api/user/{id}/assign-role | UserController@assignRole | Admin |
+| Method | Path                     | Action                    | Roles |
+|--------|--------------------------|---------------------------|-------|
+| POST   | api/auth/login           | AuthController@login      | None  |
+| POST   | api/auth/register        | AuthController@register   | None  |
+| GET    | api/gift                 | GiftController@index      | Member|
+| POST   | api/gift                 | GiftController@store      | Admin |
+| GET    | api/gift/:id             | GiftController@show       | Member|
+| PUT    | api/gift/:id             | GiftController@update     | Admin |
+| PATCH  | api/gift/:id             | GiftController@upsert     | Admin |
+| DELETE | api/gift/:id             | GiftController@delete     | Admin |
+| POST   | api/gift/:id /rating     | GiftController@rate       | Member|
+| POST   | api/gift/:id /redeem     | GiftController@redeem     | Member|
+| GET    | api/role                 | RoleController@index      | Admin |
+| POST   | api/role                 | RoleController@store      | Admin |
+ | GET    | api/role/:id             | RoleController@show       | Admin |
+| PUT    | api/role/:id             | RoleController@update     | Admin |
+| DELETE | api/role/:id             | RoleController@delete     | Admin |
+| GET    | api/user                 | UserController@index      | Admin |
+| GET    | api/user/me              | UserController@me         | Member|
+| POST   | api/user                 | UserController@store      | Admin |
+| PUT    | api/user/:id             | UserController@update     | Admin |
+| GET    | api/user/:id             | UserController@show       | Admin |
+| DELETE | api/user/:id             | UserController@delete     | Admin |
+| POST   | api/user/:id/assign-role | UserController@assignRole | Admin |
 
 ## Automated Testing
 #### Library using [PESTPhp Testing Framework](https://pestphp.com/)
