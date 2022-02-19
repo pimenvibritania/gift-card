@@ -24,11 +24,17 @@ it('Create role and user seeder and get the token for each roles', function () {
     $this->assertNotEmpty($this->userToken);
 });
 
-it('can fetch gift list and contains pagination', function () {
+it('Can fetch gift list and contains pagination', function () {
     Gift::factory()->create();
     $response = $this->getJson("/api/gift");
     expect($response['data'][0]['type'])->toBe("gift");
     expect($response['links'])->toHaveKeys(['self', 'first', 'last']);
     $response->assertStatus(200);
+});
+
+it('Unauthenticated when access restricted endpoint', function () {
+    Gift::factory()->create();
+    $response = $this->postJson("/api/gift", []);
+    $response->assertStatus(403);
 });
 
