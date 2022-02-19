@@ -1,0 +1,34 @@
+<?php
+
+use App\Models\Gift;
+use App\Models\User;
+use Database\Seeders\UserRoleSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tymon\JWTAuth\Facades\JWTAuth;
+
+uses(Tests\TestCase::class, RefreshDatabase::class);
+
+$adminToken ="";
+$userToken ="";
+
+it('Create role and user seeder and get the token for each roles', function () {
+    $this->seed(UserRoleSeeder::class);
+    $users = User::all();
+    foreach ($users as $user) {
+       in_array("admin", $user->getRoleNames()->toArray()) ?
+           $this->adminToken = JWTAuth::fromUser($user) :
+           $this->userToken = JWTAuth::fromUser($user);
+    }
+
+    $this->assertNotEmpty($this->adminToken);
+    $this->assertNotEmpty($this->userToken);
+});
+
+it('can fetch gift list and contains pagination', function () {
+    Gift::factory()->create();
+    $response = $this->getJson("/api/gift");
+    expect($response['data'][0]['type'])->toBe("gift");
+    expect($response['links'])->toHaveKeys(['self', 'first', 'last']);
+    $response->assertStatus(200);
+});
+

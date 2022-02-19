@@ -6,16 +6,18 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
+        "fakerphp/faker": "^1.9.1",
         "fruitcake/laravel-cors": "^2.0.5",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.0",
         "laravel/helpers": "^1.5",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.2",
         "spatie/laravel-fractal": "^6.0",
         "spatie/laravel-permission": "^5.5",
-        "tomfordrumm/jwt-auth": "dev-develop",
-        "fakerphp/faker": "^1.9.1"
+        "tomfordrumm/jwt-auth": "dev-develop"
     },
     "require-dev": {
         "laravel/sail": "^1.0.1",
@@ -59,7 +61,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

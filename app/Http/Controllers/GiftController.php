@@ -53,9 +53,9 @@ class GiftController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return array
      */
-    public function store(Request $request)
+    public function store(Request $request): array
     {
         $request->validate([
             "name" => "required|string|max:255",
