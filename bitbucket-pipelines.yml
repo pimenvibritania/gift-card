@@ -42,5 +42,6 @@ pipelines:
                   variables:
                     SSH_USER: $SSH_USER
                     SERVER: $SSH_HOST
-                    COMMAND: 'cd /home/pimenvibritania && mkdir testDeploy'
+#                    COMMAND: 'export JWT_SECRET='"'${JWT_SECRET}'"'; echo ${JWT_SECRET}'
+                    COMMAND: 'export DB_HOST='"'${DB_HOST}'"'; echo ${DB_HOST}'
 
