@@ -43,4 +43,4 @@ pipelines:
                   variables:
                     SSH_USER: $SSH_USER
                     SERVER: $SSH_HOST
-                    COMMAND: $COMMAND
+                    COMMAND: "cd /home/pimenvibritania/gift-card && git pull origin development && /usr/bin/php8.1 /usr/local/bin/composer install --ignore-platform-reqs --optimize-autoloader && /usr/bin/php8.1 artisan cache:clear && /usr/bin/php8.1 artisan config:cache && /usr/bin/php8.1 artisan route:cache && /usr/bin/php8.1 artisan view:cache && /usr/bin/php8.1 artisan optimize"
