@@ -36,7 +36,7 @@ pipelines:
                 - find . -name '*.php' -exec php -l {} \;
           - step:
               name: Deploy to Staging
-              deployment: Stagingsh
+              deployment: Staging
               trigger: manual
               script:
                 - pipe: atlassian/ssh-run:0.4.0
