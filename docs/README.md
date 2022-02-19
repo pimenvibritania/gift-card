@@ -14,3 +14,18 @@
     - Dukungan komunitas yang terus berkembang
 - Jelaskan mengenai schema DB yang dibuat
     - ![Schema DB](https://imgur.com/6VQ8sIl.png)
+<hr>
+
+
+####NOTE - Untuk kalkulasi rating & Stock:
+- Initial rating = 0 untuk product A
+- Initial stock = 5 untuk product A
+- Asumsi user A telah meredeem product A sebanyak 3 dan memberi rating senilai 3,67 
+- Current rating = 3.67
+- Current stock = 2
+- Asumsi user B telah meredeem product A sebanyak 2 dan memberi rating senilai 4,25 
+- Curren rating = (7,92/2) = 3,96
+- Rating dibulatkan menjadi 4.0
+- Current stock = 0
+- Asumsi user C telah meredeem product A sebanyak 1
+- User C tidak bisa meredeem, stock habis
