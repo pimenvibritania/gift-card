@@ -14,7 +14,7 @@
     - Portability, Mysql dapat berjalan stabil pada berbagai sistem oprasi Windows, Linux, Sun Os, Mac, unix, dan masih banyak.
     - Dukungan komunitas yang terus berkembang
 - Jelaskan mengenai schema DB yang dibuat
-    - ![Schema DB](https://imgur.com/6VQ8sIl.png)
+    - ![Schema DB](https://i.imgur.com/V4zyPHL.png)
 
 
 ####NOTE - Untuk kalkulasi rating & Stock:
