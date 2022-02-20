@@ -16,8 +16,7 @@
 - Jelaskan mengenai schema DB yang dibuat
     - ![Schema DB](https://i.imgur.com/V4zyPHL.png)
 
-
-####NOTE - Untuk kalkulasi rating & Stock:
+#### NOTE Untuk kalkulasi rating & Stock:
 - Initial rating = 0 untuk product A
 - Initial stock = 5 untuk product A
 - Asumsi user A telah meredeem product A sebanyak 3 dan memberi rating senilai 3,67 
